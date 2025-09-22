@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 type AuthorInput = {
   name: string;
   description: string;
-  birthDate: string; // yyyy-mm-dd
+  birthDate: string; 
   image: string;
 };
 
@@ -33,7 +33,7 @@ export default function CrearAutor() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      router.push("/authors"); // vuelve a la lista
+      router.push("/authors"); 
     } catch (e) {
       setErr(e instanceof Error ? e.message : "Error creando autor");
     } finally {

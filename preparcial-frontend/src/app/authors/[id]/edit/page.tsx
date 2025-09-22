@@ -10,7 +10,6 @@ type Author = {
   image: string;
 };
 
-// Helpers ETag
 function normalizeETag(raw: string | null): string | null {
   if (!raw) return null;
   let tag = raw.trim();
@@ -58,7 +57,6 @@ export default function EditAuthorPage() {
     if (!author) return;
     try {
       setBusy(true);
-      // si por alguna razón perdimos el ETag, lo pedimos
       const match = etag ?? (await fetchETag(`/api/authors/${author.id}`)) ?? "*";
       const res = await fetch(`/api/authors/${author.id}`, {
         method: "PUT",
